@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!-- bean的id和映射类 -->
+    <bean id="man" class="helloworld.Person">
+        <property name="name" value="Lumin"/>
+        <property name="age" value="12"/>
+    </bean>
+    
+    <aop:config>
+    	<aop:pointcut id="pointcut1" expression="execute(* helloworld.Person.*(..))"></aop:pointcut>
+    	<aop:aspect ref="helloworld.Book">
+    		<aop:before method="before1" pointcut-ref="pointcut1"></aop:before>
+    		<aop:after-returning method="after1" pointcut-ref="pointcut1"></aop:after-returning>
+    	</aop:aspect>
+    </aop:config>
+</beans>
