@@ -11,7 +11,7 @@
     </bean>
     
     <aop:config>
-    	<aop:pointcut id="pointcut1" expression="execute(* helloworld.Person.*(..))"></aop:pointcut>
+    	<aop:pointcut id="pointcut1" expression="execution(* helloworld.Person.*(..))"></aop:pointcut>
     	<aop:aspect ref="helloworld.Book">
     		<aop:before method="before1" pointcut-ref="pointcut1"></aop:before>
     		<aop:after-returning method="after1" pointcut-ref="pointcut1"></aop:after-returning>
